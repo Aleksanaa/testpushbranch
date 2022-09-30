@@ -1,17 +1,26 @@
-name: Auto Create Packages on OBS
+name: Format files
 
 on:
-  create:
   push:
-    branches:
-      create:
-
+    branches-ignore:
+      - 'main'
+    paths:
+      - 'PKGBUILD'
 
 jobs:
-  create_pkg:
-    if: ${{ github.event.ref_type == 'branch' }}
+  format:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Format the PKGBUILD
+        uses: collin-miller/shfmt-action@v1
         with:
-          ref: 'main'
+          args: -d ./PKGBUILD
+
+      - name: Upload changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Format files
