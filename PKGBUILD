@@ -17,7 +17,7 @@ build() {
   # tests require "check" package which is not available currently
   ewe-meson $pkgname-$pkgver build \
     -D documentation=false \
--D libwacom=false \
+        -D libwacom=false \
     -D debug-gui=false \
     -D tests=false
   meson configure build
