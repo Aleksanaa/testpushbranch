@@ -20,7 +20,7 @@ build() {
         -D libwacom=false \
     -D debug-gui=false \
     -D tests=false
-  meson configure build
+      meson configure build
   meson compile -C build
 }
 
