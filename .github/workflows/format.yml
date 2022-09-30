@@ -1,7 +1,9 @@
 name: Format files
 
 on:
-  push
+  push:
+    branches:
+      - *
 
 jobs:
   format:
