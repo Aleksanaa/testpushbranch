@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 build() {
   # tests require "check" package which is not available currently
   ewe-meson $pkgname-$pkgver build \
-    -D documentation=false \
+				    -D documentation=false \
         -D libwacom=false \
     -D debug-gui=false \
     -D tests=false
